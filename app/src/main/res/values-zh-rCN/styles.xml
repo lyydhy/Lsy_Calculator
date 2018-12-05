@@ -1,0 +1,7 @@
+
+<resources>
+
+    <style name="button_smail_style" parent="@style/button_style">
+        <item name="android:textSize">40dp</item>
+    </style>
+</resources>
