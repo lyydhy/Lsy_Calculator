@@ -41,6 +41,7 @@
                 android:id="@+id/button12"
                 style="@style/button_style"
 
+                android:onClick="onClick"
                 android:text="@string/leftParen" />
 
             <Button

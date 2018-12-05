@@ -266,12 +266,12 @@ public class Util {
                         BigDecimal b = operandList.removeLast();
                         BigDecimal a = operandList.removeLast();
                         String curOperator = operatorList.removeLast();
-
                         try {
                             operandList.addLast(operate(a, curOperator, b));
                         } catch (ArithmeticException e) {
                             return "除数不能为0！";
                         }
+
                         break;
                     // 运算符输入错误的处理：终止计算，在屏幕显示input error!
                     default:
