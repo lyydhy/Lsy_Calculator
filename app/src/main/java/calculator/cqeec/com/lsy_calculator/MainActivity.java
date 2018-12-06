@@ -94,17 +94,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (!this.lstrOpera.equals("")) {
-            if (n.equals("+") || n.equals("-") || n.equals("*") || n.equals("/")) {
+            if (n.equals("+") || n.equals("-") || n.equals("*") || n.equals("/")||n.equals("(")) {
                 this.strOpera = this.lstrOpera.concat(strOpera);
+                if(n.equals("("))
+                {
+                    StringBuffer s=new StringBuffer(this.strOpera);
+                    int g=this.strOpera.indexOf("(");
+                    s.insert(g,"*");
+                    this.strOpera=s.toString();
+                }
             }
-        } else {
-
-          /*  if (n.equals("+") || n.equals("-") || n.equals("*") || n.equals("/") || n.equals(")")) {
-                Toast.makeText(MainActivity.this, "老弟，有问题哦！", Toast.LENGTH_LONG).show();
-                this.strOpera = "";
-
-            }*/
-
 
         }
         this.result.setText(this.strOpera);
