@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import util.Util;
 
@@ -62,14 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
                     Util util = new Util();
                     try {
-                        strOpera = util.evaluateExpression(strOpera);
-                    } catch (AbstractMethodError e3) {
+                        strResult = util.evaluateExpression(strOpera);
+                    } catch (Exception e3) {
                         Toast.makeText(MainActivity.this, "老弟，有问题哦！", Toast.LENGTH_LONG).show();
+                        strOpera = "";
                     }
-                    strResult = util.evaluateExpression(strOpera);
                     lstrOpera = strResult;
                     result.setText(strOpera + "\n" + lstrOpera);
-
                     strOpera = "";
                     strResult = "";
 
@@ -87,37 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.strOpera += ((Button) v).getText().toString();
         String n = this.strOpera.substring(0);
-        int b = 0;
-        String g = "+-*/";
-        String c = this.strOpera;
-//                 try{
-//                     for(int i=1;i<this.strOpera.length();i++)
-//
-//                     {/*
-//                     if(c.charAt(i)==this.strOpera.charAt(++i)&&c.substring(i).equals("+")||
-//                             c.substring(i).equals("-")||
-//                             c.substring(i).equals("*")||
-//                             c.substring(i).equals("/")||
-//                             c.substring(i).equals("."))
-//                     {
-//                         Toast.makeText(MainActivity.this,"老弟有问题哦！",Toast.LENGTH_LONG).show();
-//                        this.strOpera=this.strOpera.substring(0,this.strOpera.length()-1);
-//                     }*/
-//                      if(g.indexOf(this.strOpera.substring(i))!=-1)
-//                      {
-//                          b++;
-//                          if(b>2)
-//                          {
-//                              Toast.makeText(MainActivity.this,"老弟有问题哦！",Toast.LENGTH_LONG).show();
-//                          }
-//                      }
-//                     }
-//                 }
-//                 catch (Exception e2)
-//                 {
-//                     Toast.makeText(MainActivity.this,"老弟有11问题哦！",Toast.LENGTH_LONG).show();
-//                 }
-//
+
 
         if (!this.lstrOpera.equals("")) {
             if (n.equals("+") || n.equals("-") || n.equals("*") || n.equals("/")) {
@@ -125,18 +99,15 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
 
-            if (n.equals("+") || n.equals("-") || n.equals("*") || n.equals("/") || n.equals(")")) {
+          /*  if (n.equals("+") || n.equals("-") || n.equals("*") || n.equals("/") || n.equals(")")) {
                 Toast.makeText(MainActivity.this, "老弟，有问题哦！", Toast.LENGTH_LONG).show();
                 this.strOpera = "";
 
-            }
+            }*/
 
 
         }
-       this.result.setText(strOpera);
-
-
-
+        this.result.setText(this.strOpera);
 
 
     }
